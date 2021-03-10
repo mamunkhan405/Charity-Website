@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Events {% endblock title %}
+
+{% block css %}
+<style>
+  
+  .event-grid .event-image img{
+      width: 100%;
+      height: auto;
+  }
+  
+ /* .event-grid .event-links{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      position: absolute;
+      bottom: 7px;
+      right: 10px;
+  }*/
+
+  .event-grid .event-content{
+      padding: 12px 0 0;
+      position: relative;
+  }
+
+
+  .text-block {
+        position: absolute;
+        bottom: 85%;
+        left:4%;
+        color: white;
+        
+
+      }
+
+   .badge{
+    width: 150px;
+    height: 40px;
+   }   
+  .badge-color{
+          background-color:  orange;
+          opacity: .75;
+      }
+  
+</style>
+{% endblock css%}
+
+{% block body %}
+
+         
+            <div class="container">
+              <div class="row">
+                {% for e in event %}
+                <div class="col-md-4 col-sm-6 mt-4">
+                    <div class="event-grid">
+                        <div class="event-image">
+                            <a href="{{ e.get_absolute_url }}" class="image">
+                                <img height="250px;" width="350px;"  src="{% if e.event_image %}{{ e.event_image.url }}{%else %}
+                                {% static 'img/no_image.png' %}{% endif %}">
+                            </a>
+                            <div class="text-block">
+                                <p class="text-white badge badge-color" style="font-size:20px;">{{e.event_date}}</p>
+                            </div>
+                           
+                        </div>
+                        <div class="event-content ">
+                          <h6 style="font-size: 18px;">{{e.event_name}}</h6>
+                          <p class="font-weight-bold mb-0" style="color: orange;">{{e.event_date}}</p>
+                          <h6 class="text-muted">{{e.event_desc|truncatewords:15|linebreaks}}</h6>
+                           
+                        </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            
+
+
+
+
+       
+{% endblock body %}
+
+
+{% block script%}
+{% endblock script %}

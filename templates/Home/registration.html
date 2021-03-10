@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Registration {% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+           <!-- CONTACT FORM  -->
+           <div class="col-md-6 p-3 bg-con">
+               <h3 class="text-center font-weight-bold " >Register to join us</h3>
+            <form class="p-4" method="POST" >
+              {% csrf_token %}
+                <div class="form-group row mt-0 mb-0">
+                  <label for="name" class="col-sm-3 col-form-label font-weight-bold ">Full Name:</label>
+                  <div class="col-sm-12">
+                    <input type="text" name="mem_name" class="form-control s" id="name" required>
+                  </div>
+                </div>
+                
+                <div class="form-group row mt-0 mb-0">
+                  <label for="email" class="col-sm-3 col-form-label font-weight-bold">Email:</label>
+                  <div class="col-sm-12">
+                    <input type="email" name="mem_email" class="form-control s" id="exampleInputEmail1" aria-describedby="EmailHelp" required >
+                  </div>
+                </div>
+                <div class="form-group row mt-0 mb-0">
+                  <label for="phone" class="col-sm-3 col-form-label font-weight-bold ">Phone:</label>
+                  <div class="col-sm-12">
+                    <input type="text" name="mem_contact" class="form-control s " id="phone" required>
+                  </div>
+                </div>
+                 <div class="form-group row mt-0 mb-0">
+                  <label for="add" class="col-sm-3 col-form-label font-weight-bold">Address</label>
+                  <div class="col-sm-12">
+                    <input type="text" name="mem_address" class="form-control s " id="add" required >
+                  </div>
+                </div>
+                <div class="form-group row mt-0 mb-0">
+                  <label for="image" class="col-sm-3 col-form-label font-weight-bold">Image</label>
+                  <div class="col-sm-12">
+                    <input type="file" name="mem_image" class="form-control s " id="image" required >
+                  </div>
+                </div>
+
+                
+                <button type="submit" class="btn btn-success mt-2">
+                  <!-- <i class="fa fa-paper-plane" aria-hidden="true"></i> -->
+                   Submit</button>
+              </form>
+           </div>
+
+       </div>
+</div>
+
+{% endblock %}

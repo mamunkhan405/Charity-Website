@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Events {% endblock title %}
+
+{% block css %}
+<style>
+  
+  .event-grid .event-image img{
+      width: 100%;
+      height: auto;
+  }
+  
+</style>
+{% endblock css%}
+
+{% block body %}
+
+         
+    <div class="container">
+              <h1 class="text-center text-weight-bold">Gallery</h1>
+              <div class="row">
+                {% for i in images %}
+                <div class="col-md-3 col-sm-12 mt-4 ">
+                    <div class="event-grid">
+                        <div class="event-image ">
+                            
+                                <img height="270px;" width="270px;"  src="{% if i.gellery_image %}{{ i.gellery_image.url }}{%else %}
+                                {% static 'img/no_image.png' %}{% endif %}">
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                  {% endfor %}
+              </div>
+
+                <br><br>
+                 <h1 class="text-center text-weight-bold">Video Gallery</h1>
+                <div class="row">
+
+                   {% for v in videos %}
+                 <div class="col-md-4 col-sm-12 mt-4 ">
+                    <div class="event-grid">
+                        <div class="event-image ">
+                  
+                    <video height="270px;" width="330px;" controls>
+                    <source src='{{ MEDIA_URL }}{{ v.video_gallery  }}' type='video/mp4'>
+                    Your browser does not support the video tag.
+                    </video>
+
+                        </div>
+                        
+                    </div>
+                </div>
+                  {% endfor %}
+                
+                </div>
+    </div>
+            
+
+
+
+
+       
+{% endblock body %}
+
+
+{% block script%}
+
+
+{% endblock script %}

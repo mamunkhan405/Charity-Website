@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Event Details {% endblock title %}
+
+{% block css %}
+<style >
+	.cont{
+		padding-right: 25%;
+		padding-left: 25%;
+	}
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="cont mt-6 ">
+
+	<div class="row">
+		<div class="col-md-6 ">
+		   <h4 class="font-weight-bold">Time</h4>	
+			<br>
+		   <p class="text-muted">{{event.event_date}}	<br>
+		   {{event.event_time}}	
+		   </p>
+		</div>
+		<div class="col-md-6">
+		   <h4 class="font-weight-bold">Location</h4>	
+			<br>
+			<p class="text-muted">{{event.event_location}}</p> 
+		</div>
+		
+	</div>
+	<div>
+		
+          <img class="img-fulid mt-4" height="70%" width="100%"  src="{% if event.event_image %}{{ event.event_image.url }}{%else %}
+                                {% static 'img/no_image.png' %}{% endif %}">
+                            
+		<h4 class="mt-4">{{event.event_name}}</h4>
+	    
+	    <p class="text-muted text-justify mt-4">
+	        {{event.event_desc|safe}}
+	    </p>
+	</div>
+
+    
+    
+</div>
+  
+{% endblock body %}
+
+{% block script %} 
+{% endblock script %}
